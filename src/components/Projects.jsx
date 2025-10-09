@@ -15,7 +15,7 @@ const Project = () => {
       title: "Weather App",
       description: "Weather forecast app with real-time API integration.",
       tech: ["HTML", "API", "CSS", "JavaScript"],
-      link: "#",
+      link: "https://weather-app-ebon-one-26.vercel.app/",
       image: weatherImg,
     },
   ];
