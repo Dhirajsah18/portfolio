@@ -8,14 +8,14 @@ const Project = () => {
       title: "Portfolio Website",
       description: "A personal website to showcase my work and skills.",
       tech: ["React", "Tailwind CSS", "JavaScript"],
-      link: "#",
+      link: "https://portfolio-sigma-five-34ng18nlu6.vercel.app/",
       image: portfolioImg,
     },
         {
       title: "Weather App",
       description: "Weather forecast app with real-time API integration.",
       tech: ["HTML", "API", "CSS", "JavaScript"],
-      link: "#",
+      link: "https://weather-app-ebon-one-26.vercel.app/",
       image: weatherImg,
     },
   ];
