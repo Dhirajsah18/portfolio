@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 const About = () => (
   <section
     id="home"
-    className="mt-[50px] w-full grid md:grid-cols-2 gap-10 place-content-center md:px-20 pt-5 pb-10 rounded-2xl bg-[#302b63] bg-opacity-10 shadow-lg border-2 border-white/10"
+    className="glass mt-[50px] w-full grid md:grid-cols-2 gap-10 place-content-center md:px-20 pt-5 pb-10 rounded-2xl bg-[#302b63] bg-opacity-10 shadow-lg border-2 border-white/10"
   >
     {/* Glowing Border */}
     <div className="absolute inset-0 rounded-2xl border-4 border-blue-500 blur-lg opacity-20 pointer-events-none animate-pulse"></div>

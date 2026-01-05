@@ -7,23 +7,43 @@ import {
   FaReact,
   FaGitAlt,
   FaGithub,
+  FaNodeJs,
 } from "react-icons/fa";
-import { SiMysql, SiC, SiCplusplus, SiTailwindcss } from "react-icons/si";
+import {
+  SiMysql,
+  SiC,
+  SiCplusplus,
+  SiTailwindcss, 
+  SiMongodb,
+  SiExpress,
+  SiVite, } from "react-icons/si";
 
-const skills = [
+export const skills = [
   { name: "HTML5", icon: <FaHtml5 className="text-orange-600" /> },
   { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" /> },
   { name: "JavaScript", icon: <FaJsSquare className="text-yellow-400" /> },
-  { name: "Python", icon: <FaPython className="text-blue-300" /> },
+
+  { name: "React (Vite)", icon: <FaReact className="text-cyan-400 animate-spin" /> },
+  { name: "Vite", icon: <SiVite className="text-purple-500" /> },
+
+  { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
+  { name: "Express.js", icon: <SiExpress className="text-gray-300" /> },
+
+  { name: "Python", icon: <FaPython className="text-blue-400" /> },
   { name: "Java", icon: <FaJava className="text-red-600" /> },
-  { name: "React", icon: <FaReact className="text-cyan-400 animate-spin-slow" /> },
+
+  { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
+  { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
+
   { name: "Git", icon: <FaGitAlt className="text-orange-500" /> },
   { name: "GitHub", icon: <FaGithub className="text-gray-300" /> },
-  { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
-  { name: "C", icon: <SiC className="text-blue-400" /> },
+
+  { name: "C", icon: <SiC className="text-blue-500" /> },
   { name: "C++", icon: <SiCplusplus className="text-blue-600" /> },
-  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-500" /> },
+
+  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-500" /> }
 ];
+
 const Skills = () => {
   return (
     <section

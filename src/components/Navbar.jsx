@@ -9,7 +9,7 @@ const Navbar = () => {
   }, [isOpen]);
 
   return (
-    <nav className="fixed top-0 left-0 w-full bg-opacity-10 backdrop-blur-md z-50 shadow-md">
+    <nav className="glass fixed top-0 left-0 w-full bg-opacity-10 backdrop-blur-md z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 h-[50px] flex justify-between items-center">
         <a href="#about" className="text-2xl text-gray-200 hover:text-white font-bold">
           My Portfolio
@@ -17,11 +17,11 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-12 z-10 cursor-pointer">
-          <li><a href="#about" className="text-gray-100 hover:text-sky-400">About</a></li>
-          <li><a href="#skills" className="text-gray-100 hover:text-sky-400">Skills</a></li>
-          <li><a href="#projects" className="text-gray-100 hover:text-sky-400">Projects</a></li>
-          <li><a href="#education" className="text-gray-100 hover:text-sky-400">Education</a></li>
-          <li><a href="#contact" className="text-gray-100 hover:text-sky-400">Contact</a></li>
+          <li><a href="#about" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">About</a></li>
+          <li><a href="#skills" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">Skills</a></li>
+          <li><a href="#projects" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">Projects</a></li>
+          <li><a href="#education" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">Education</a></li>
+          <li><a href="#contact" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">Contact</a></li>
         </ul>
 
         {/* Hamburger Icon */}

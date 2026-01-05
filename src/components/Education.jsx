@@ -24,8 +24,8 @@ const Education = () => {
 
   return (
     <section id="education" className="mt-4 py-16 px-4 md:px-8">
-      <div className="max-w-5xl mx-auto ">
-        <h2 className="text-3xl font-bold text-white mb-12 text-center">
+      <div className=" max-w-5xl mx-auto ">
+        <h2 className="text-3xl font-bold text-white mt-2 mb-12 text-center">
           My Education and Qualifications
         </h2>
 
@@ -37,7 +37,7 @@ const Education = () => {
             {educationData.map((edu, index) => (
               <div
                 key={index}
-                className="relative z-10 bg-opacity-10 backdrop-blur-md border border-white/10 rounded-xl p-6 w-full md:w-3/4 mx-auto text-white"
+                className="glass relative z-10 bg-opacity-10 backdrop-blur-md border border-white/10 rounded-xl p-6 w-full md:w-3/4 mx-auto text-white"
               >
                 <p className="text-sm text-gray-300">{edu.year}</p>
                 <h3 className="text-2xl font-semibold mt-1">{edu.degree}</h3>
