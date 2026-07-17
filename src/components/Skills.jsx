@@ -1,67 +1,53 @@
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJsSquare,
-  FaPython,
-  FaJava,
-  FaReact,
-  FaGitAlt,
-  FaGithub,
-  FaNodeJs,
-} from "react-icons/fa";
-import {
-  SiMysql,
-  SiC,
-  SiCplusplus,
-  SiTailwindcss, 
-  SiMongodb,
-  SiExpress,
-  SiVite, } from "react-icons/si";
-
-export const skills = [
-  { name: "HTML5", icon: <FaHtml5 className="text-orange-600" /> },
-  { name: "CSS3", icon: <FaCss3Alt className="text-blue-500" /> },
-  { name: "JavaScript", icon: <FaJsSquare className="text-yellow-400" /> },
-
-  { name: "React (Vite)", icon: <FaReact className="text-cyan-400 animate-spin" /> },
-  { name: "Vite", icon: <SiVite className="text-purple-500" /> },
-
-  { name: "Node.js", icon: <FaNodeJs className="text-green-500" /> },
-  { name: "Express.js", icon: <SiExpress className="text-gray-300" /> },
-
-  { name: "Python", icon: <FaPython className="text-blue-400" /> },
-  { name: "Java", icon: <FaJava className="text-red-600" /> },
-
-  { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-  { name: "MySQL", icon: <SiMysql className="text-blue-600" /> },
-
-  { name: "Git", icon: <FaGitAlt className="text-orange-500" /> },
-  { name: "GitHub", icon: <FaGithub className="text-gray-300" /> },
-
-  { name: "C", icon: <SiC className="text-blue-500" /> },
-  { name: "C++", icon: <SiCplusplus className="text-blue-600" /> },
-
-  { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-500" /> }
-];
+import { skills } from "../data";
+import { useReveal } from "../hooks/useReveal";
+import { getSkillIcon } from "./skillIcons";
 
 const Skills = () => {
+  const ref = useReveal();
+
   return (
-    <section
-      id="skills"
-      className="mt-6 py-10 rounded-2xl text-white bg-[#302b63] bg-opacity-10 shadow-lg "
-    >
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-8">Skills</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-10">
-          {skills.map((skill) => (
+    <section id="skills" className="section-tint tint-amber py-20 px-4">
+      <div ref={ref} className="max-w-6xl mx-auto">
+        <div className="reveal mb-10 text-center">
+          <p className="font-mono text-xs tracking-[0.3em] uppercase mb-2" style={{ color: "var(--accent)" }}>
+            Toolbox
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold heading-accent inline-block" style={{ color: "var(--text-primary)" }}>
+            Skills
+          </h2>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {skills.map((group, i) => (
             <div
-              key={skill.name}
-              className="flex flex-col items-center group"
+              key={group.category}
+              className="reveal card-hover glass p-6"
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="text-5xl group-hover:scale-110 transition-transform">
-                {skill.icon}
+              <h3
+                className="font-display text-lg font-semibold mb-4"
+                style={{ color: "var(--accent)" }}
+              >
+                {group.category}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {group.items.map((item) => {
+                  const Icon = getSkillIcon(item);
+                  return (
+                    <span
+                      key={item}
+                      className="pill-hover inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border"
+                      style={{
+                        borderColor: "var(--glass-border)",
+                        color: "var(--text-secondary)",
+                      }}
+                    >
+                      <Icon size={13} />
+                      {item}
+                    </span>
+                  );
+                })}
               </div>
-              <span className="mt-2 font-medium">{skill.name}</span>
             </div>
           ))}
         </div>
@@ -69,4 +55,5 @@ const Skills = () => {
     </section>
   );
 };
+
 export default Skills;

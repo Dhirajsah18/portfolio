@@ -1,48 +1,57 @@
-import React from "react";
+import { education } from "../data";
+import { useReveal } from "../hooks/useReveal";
 
 const Education = () => {
-  const educationData = [
-    {
-      year: "2022 - 2026",
-      degree: "B.Tech in Computer Science & Engineering",
-      institution: "Brainware University",
-      details: "CGPA: 8.9",
-    },
-    {
-      year: "2021",
-      degree: "Higher Secondary (Class 12)",
-      institution: "Kendriya Vidyalaya",
-      details: "Percentage: 81.8%",
-    },
-    {
-      year: "2019",
-      degree: "Secondary (Class 10)",
-      institution: "Kendriya Vidyalaya",
-      details: "Percentage: 81%",
-    },
-  ];
+  const ref = useReveal();
 
   return (
-    <section id="education" className="mt-4 py-16 px-4 md:px-8">
-      <div className=" max-w-5xl mx-auto ">
-        <h2 className="text-3xl font-bold text-white mt-2 mb-12 text-center">
-          My Education and Qualifications
-        </h2>
+    <section id="education" className="section-tint tint-amber py-20 px-4">
+      <div ref={ref} className="max-w-4xl mx-auto">
+        <div className="reveal mb-12 text-center">
+          <p className="font-mono text-xs tracking-[0.3em] uppercase mb-2" style={{ color: "var(--accent)" }}>
+            Academics
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-semibold heading-accent inline-block" style={{ color: "var(--text-primary)" }}>
+            Education
+          </h2>
+        </div>
 
-        <div className="relative">
-          {/* Center timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white/20 rounded-full"></div>
+        <div className="relative pl-8 md:pl-0">
+          <div
+            className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px md:-translate-x-1/2"
+            style={{ background: "linear-gradient(180deg, var(--accent), var(--accent-2), transparent)" }}
+          />
 
-          <div className="space-y-12">
-            {educationData.map((edu, index) => (
+          <div className="space-y-8">
+            {education.map((edu, index) => (
               <div
                 key={index}
-                className="glass relative z-10 bg-opacity-10 backdrop-blur-md border border-white/10 rounded-xl p-6 w-full md:w-3/4 mx-auto text-white"
+                className={`reveal relative md:flex ${
+                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <p className="text-sm text-gray-300">{edu.year}</p>
-                <h3 className="text-2xl font-semibold mt-1">{edu.degree}</h3>
-                <p className="text-blue-300 text-xl font-medium">{edu.institution}</p>
-                <p className="text-sm text-gray-300 mt-1">{edu.details}</p>
+                <div
+                  className="glow-pulse absolute left-8 md:left-1/2 top-6 w-3 h-3 rounded-full -translate-x-1/2 z-10"
+                  style={{ background: "var(--accent)" }}
+                />
+                <div className="md:w-1/2" />
+                <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pl-10" : "md:pr-10"}`}>
+                  <div className="card-hover glass p-6">
+                    <p className="font-mono text-xs mb-1" style={{ color: "var(--accent)" }}>
+                      {edu.year}
+                    </p>
+                    <h3 className="font-display text-xl font-semibold mb-1" style={{ color: "var(--text-primary)" }}>
+                      {edu.degree}
+                    </h3>
+                    <p className="text-sm font-semibold mb-1" style={{ color: "var(--text-secondary)" }}>
+                      {edu.institution}
+                    </p>
+                    <p className="text-xs" style={{ color: "var(--text-secondary)" }}>
+                      {edu.details}
+                    </p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>

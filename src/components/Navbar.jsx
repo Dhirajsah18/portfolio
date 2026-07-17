@@ -1,57 +1,100 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { FiSun, FiMoon, FiMenu, FiX } from "react-icons/fi";
+import { useTheme } from "../context/ThemeContext";
+import { navLinks } from "../data";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", isOpen);
     return () => document.body.classList.remove("overflow-hidden");
   }, [isOpen]);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="glass fixed top-0 left-0 w-full bg-opacity-10 backdrop-blur-md z-50 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 h-[50px] flex justify-between items-center">
-        <a href="#about" className="text-2xl text-gray-200 hover:text-white font-bold">
-          My Portfolio
+    <nav
+      className={`glass fixed top-3 left-1/2 -translate-x-1/2 w-[94%] max-w-6xl z-50 transition-all duration-300 ${
+        scrolled ? "py-2" : "py-3"
+      }`}
+      style={{ borderRadius: "18px" }}
+    >
+      <div className="px-5 flex justify-between items-center">
+        <a
+          href="#home"
+          className="font-display text-lg md:text-xl font-semibold tracking-tight transition-transform hover:scale-105 inline-block"
+          style={{ color: "var(--text-primary)" }}
+        >
+          Dhiraj<span className="text-gradient"></span>
         </a>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-12 z-10 cursor-pointer">
-          <li><a href="#about" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">About</a></li>
-          <li><a href="#skills" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">Skills</a></li>
-          <li><a href="#projects" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">Projects</a></li>
-          <li><a href="#education" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">Education</a></li>
-          <li><a href="#contact" className="text-sky-400 hover:text-sky-600 font-semibold hover:scale-110 transition-all inline-block relative duration-200">Contact</a></li>
+        <ul className="hidden md:flex gap-8 items-center">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                className="link-underline font-body text-sm font-semibold tracking-wide uppercase opacity-80 hover:opacity-100 transition-opacity"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
         </ul>
 
-        {/* Hamburger Icon */}
-        <div className="md:hidden z-50">
+        <div className="flex items-center gap-3">
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle color theme"
+            className="glass icon-ring w-10 h-10 grid place-items-center rounded-full hover:scale-110 hover:rotate-12 transition-transform"
+            style={{ color: "var(--accent)" }}
+          >
+            {theme === "dark" ? <FiSun size={18} /> : <FiMoon size={18} />}
+          </button>
+
+          {/* Hamburger */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex flex-col justify-center items-center w-8 h-8 space-y-1 group focus:outline-none"
+            aria-label="Toggle menu"
+            className="md:hidden glass w-10 h-10 grid place-items-center rounded-full"
+            style={{ color: "var(--text-primary)" }}
           >
-            <span className={`w-8 h-0.5 bg-gray-200 transition-transform duration-300 ${isOpen ? "rotate-45 translate-y-1.5" : ""}`} />
-            <span className={`w-8 h-0.5 bg-gray-200 transition-all duration-300 ${isOpen ? "opacity-0" : "opacity-100"}`} />
-            <span className={`w-8 h-0.5 bg-gray-200 transition-transform duration-300 ${isOpen ? "-rotate-45 -translate-y-1.5" : ""}`} />
+            {isOpen ? <FiX size={18} /> : <FiMenu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Fullscreen Menu */}
+      {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-[#24243e] bg-opacity-[99%] backdrop-blur-md z-40 transform transition-transform duration-500 ease-in-out ${
+        className={`md:hidden fixed top-0 left-0 w-full h-screen z-40 transform transition-transform duration-500 ease-in-out ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
+        style={{
+            background: "var(--mobile-menu-bg)",
+          backdropFilter: "blur(24px) saturate(160%)",
+          WebkitBackdropFilter: "blur(24px) saturate(160%)",
+          borderBottom: "1px solid var(--glass-border)",
+        }}
       >
-        <ul className="flex flex-col items-center justify-center h-full font-semibold text-2xl space-y-8 text-white">
-          {["about", "skills", "projects", "education", "contact"].map((section) => (
-            <li key={section}>
+        <ul className="flex flex-col items-center justify-center h-full font-display text-3xl space-y-8">
+          {navLinks.map((link) => (
+            <li key={link.id}>
               <a
-                href={`#${section}`}
+                href={`#${link.id}`}
                 onClick={() => setIsOpen(false)}
-                className="hover:text-sky-400 transition-colors duration-200"
+                className="glass px-6 py-2 rounded-full transition-transform hover:scale-105 inline-block"
+                style={{ color: "var(--text-primary)" }}
               >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
+                {link.label}
               </a>
             </li>
           ))}
