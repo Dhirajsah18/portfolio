@@ -35,7 +35,7 @@ export const projects = [
     description:
       "A scalable full-stack video sharing platform with user authentication and role-based access. JWT-based auth secures 10+ backend API endpoints for uploads, likes, comments, playlists, and subscriptions.",
     tech: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT Auth", "REST APIs"],
-    image: null,
+    image: "vtube",
     github: "https://github.com/Dhirajsah18",
     link: "https://v-tube-iota.vercel.app",
   },

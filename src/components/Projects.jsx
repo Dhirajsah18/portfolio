@@ -4,10 +4,12 @@ import { projects } from "../data";
 import { useReveal } from "../hooks/useReveal";
 import videoSummarizerImg from "../assets/video-summarizer.jpg";
 import creativeShowcaseImg from "../assets/creative-showcase.jpg";
+import vtubeImg from "/vtube.jpg";
 
 const imageMap = {
   "video-summarizer": videoSummarizerImg,
   "creative-showcase": creativeShowcaseImg,
+  vtube: vtubeImg,
 };
 
 const Projects = () => {
